@@ -79,7 +79,7 @@ public class Scheduler {
 							functional=false;
 							break;
 						}
-						new CodeSleeper(millis);
+						new CodeRest(millis);
 						run.run();
 						didAlready=true;
 					}
