@@ -2,6 +2,7 @@ package com.leftindust.SimpleJava.file;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,8 +36,7 @@ import java.util.ArrayList;
 public class FileManager {
 
 	/**
-	 * This will return the text in a file.
-	 * @return A string with line breaks.
+	 * @return A string with line breaks containing the text of a file.
 	 * @param file This is the file that you would like to read.
 	 * @throws IOException This is due to the BufferedReader in this method.
 	 */
@@ -59,12 +59,64 @@ public class FileManager {
 	}
 	
 	/**
+	 * This method adds text to a file, but know that if you want a new line
+	 * to append, be sure to put "\n" before your text.
+	 * 
+	 * @param text The text that will be added to the file.
+	 * @param file The file which text shall be appended to.
+	 * @throws IOException The Exception comes from the FileOutputStream.
+	 */
+	public void appendFile(String text, File file) throws IOException {
+		FileOutputStream fooStream = new FileOutputStream(file, true);
+		fooStream.write(text.getBytes());
+		fooStream.close();
+	}
+	
+	/**
+	 * This method will set a file's text.
+	 * 
+	 * @param text The text that will be put in the file.
+	 * @param file The file which will be overwritten.
+	 * @throws IOException The Exception comes from the FileOutputStream.
+	 */
+	public void setFileText(String text, File file) throws IOException {
+		FileOutputStream fooStream = new FileOutputStream(file, false);
+		fooStream.write(text.getBytes());
+		fooStream.close();
+	}
+	
+	/**
+	 * @param file
+	 * @return The file extension of a file.
+	 */
+	public String getFileExtension(File file){
+		int times = 0;
+		boolean pastC = false;
+		String end = "";
+		for(char c : file.getName().toCharArray()){
+			if(times == file.getName().length() && end == "" && pastC == false){
+				return null;
+			} else if(c == '.' && pastC == false){
+				pastC = true;
+			} else if(pastC == true){
+				end=end+c;
+			}
+			times++;
+		}
+		return end;
+	}
+	
+	/**
 	 * This will return the text in a file.
 	 * @return An array of strings.
 	 * @param file This is the file that you would like to read.
 	 * @throws IOException This is due to the BufferedReader in this method.
 	 */
 	public ArrayList<String> readFileInArray(File file) throws IOException {
+		if(getFileLineAmount(file) == 0){
+			return new ArrayList<String>();
+		}
+		
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		ArrayList<String> total = new ArrayList<String>();
 		String x = "";
@@ -79,16 +131,10 @@ public class FileManager {
 	 * This will return the amount of lines in a file
 	 * @param file This is the file that you would like to get the line amount from.
 	 * @return The number of lines in the file (As an int)
-	 * @throws IOException This is due to the BufferedReader in this method.
+	 * @throws IOException This is due to the "readFileInArray" in this method (BufferedReader).
 	 */
 	public int getFileLineAmount(File file) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		int total = 0;
-		while (br.readLine() != null) {
-			total++;
-		}
-		br.close();
-		return total;
+		return readFileInArray(file).size();
 	}
 	
 
