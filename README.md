@@ -13,6 +13,9 @@ SimpleJava is a Java API to simply the use of Java for anyone! This API includes
 
 Much more is to come! Any ideas are welcome!
 
+##Download
+To download the latest version of SimpleJava, go to https://github.com/Dann15/SimpleJava/releases/.
+
 ## Important Notes
 When using the SQL libraries, you must have the MySQL JDBC Driver (http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.38.zip) from MySQL as another referenced library in your project (API) (Just know that the company SQL is in no way related to this project).
 
