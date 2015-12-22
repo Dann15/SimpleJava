@@ -32,7 +32,7 @@ import java.sql.Statement;
  * @version 1.0
  * 
  */
-public class GenericSQL {
+public class UserSQL {
 	
 	@SuppressWarnings("unused")
 	private Statement st;
@@ -49,7 +49,7 @@ public class GenericSQL {
 	 * @param password The Password of the SQL Database
 	 * @param databaseName The Name of The Database
 	 */
-	public GenericSQL(String ip, String username, String password, String databaseName){
+	public UserSQL(String ip, String username, String password, String databaseName){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://"+ip+"/"+databaseName+"?user="+username+"&password="+password);
