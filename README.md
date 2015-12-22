@@ -1,5 +1,5 @@
 # SimpleJava
-SimpleJava is a Java API to simply the use of Java for anyone! This API includes a simple file managment system, a time system, and much more! I will begin putting JAR files on this Git Repo when the project is finished.
+SimpleJava is a Java API to simply the use of Java for anyone! This API includes a simple file managment system, a time system, and much more! This API will keep on expanding so please give any ideas you have to make this API better!
 
 ##Features
 - Delay Code for a set amount of milliseconds
@@ -9,7 +9,7 @@ SimpleJava is a Java API to simply the use of Java for anyone! This API includes
 - Get the extension of a file
 - Get the amount of lines in a file
 - Log into your SQL database
-- Easily create an SQL user database with changable user information containing usernames, passwords, genders, emails, names, and age.
+- Easily create an SQL user database with configurable user information containing usernames, passwords, genders, emails, names, and age.
 
 Much more is to come! Any ideas are welcome!
 
